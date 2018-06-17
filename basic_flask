@@ -1,0 +1,8 @@
+FROM ubuntu:latest
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential
+RUN mkdir -p /app && git clone https://github.com/archangel2018/k8s.git /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["app.py"]
