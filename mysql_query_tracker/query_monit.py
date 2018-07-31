@@ -22,7 +22,7 @@ def wrt_pkle(file_name_write, dump_value):
 
 
 def read_pkle(file_name_read):
-    with open(file_name_read, 'eb') as FileOpenForRead:
+    with open(file_name_read, 'rb') as FileOpenForRead:
         old_stats_val = pickle.load(FileOpenForRead)
     return old_stats_val
 
