@@ -4,6 +4,13 @@ from sys import argv
 qry_exec = """show global status where Variable_name in ("Com_select","Com_Insert", "Com_update","Com_delete");"""
 arg_a = int(argv[1])
 arg_b = int(argv[2])
+def file_picker(req_file):
+    return {
+        0 : '/home/ubuntu/scripts/delete_db',
+        1 : '/home/ubuntu/scripts/insert_db',
+        2 : '/home/ubuntu/scripts/select_db',
+        3 : '/home/ubuntu/scripts/update_db'
+    }.get(req_file)
 def wrt_pkle():
 def read_pkle():
 def destroy_pkle():
