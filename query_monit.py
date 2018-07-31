@@ -1,5 +1,9 @@
 import MySQLdb
-import sys
+from sys import argv
+"""(('Com_delete', '1'), ('Com_insert', '3'), ('Com_select', '44'), ('Com_update', '1'))"""
+qry_exec = """show global status where Variable_name in ("Com_select","Com_Insert", "Com_update","Com_delete");"""
+arg_a = int(argv[1])
+arg_b = int(argv[2])
 def wrt_pkle():
 def read_pkle():
 def destroy_pkle():
@@ -10,16 +14,10 @@ def con_to_db(exec_query):
     cursor.execute(exec_query)
     query_out = cursor.fetchall()
     return query_out
-val_stats=con_to_db('show global status where Variable_name in ("Com_select","Com_Insert", "Com_update","Com_delete");')
-#val_insert=con_to_db('show global status like "Com_update";')
-#val_delete=con_to_db('show global status like "Com_insert";')
-#val_update=con_to_db('show global status like "Com_delete";')
-arg_a = int(sys.argv[1])
-arg_b = int(sys.argv[2])
+
+
+val_stats=con_to_db(qry_exec)
 print (arg_a,arg_b)
 print (val_stats)
 print (val_stats[arg_a][arg_b])
-val_stm = val_stats[arg_a][arg_b]
-#print (val_insert)[0][1]
-#print (val_delete)[0][1]
-#print (val_update)[0][1]
+val_stm = int(val_stats[arg_a][arg_b])
