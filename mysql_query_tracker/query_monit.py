@@ -32,7 +32,9 @@ def destroy_pkle(file_name_empty):
 
 
 def query_calculator(new_val, old_val):
-    cur_stats = new_val - old_val
+    cur_stats = int(new_val - old_val)
+    if cur_stats == 0:
+        cur_stats = new_val
     return cur_stats
 
 
