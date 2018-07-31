@@ -33,10 +33,12 @@ def destroy_pkle(file_name_empty):
 
 def query_calculator(new_val, old_val):
     cur_stats = int(new_val - old_val)
-    if cur_stats == 0:
-        cur_stats = new_val
     return cur_stats
 
+
+def query_calculator_store(new_val_after_Cal, old_val):
+    cur_stats_to_store = new_val_after_Cal + old_val
+    return cur_stats_to_store
 
 def con_to_db(exec_query):
     con_db = MySQLdb.connect('localhost', 'root', 'root', 'temp')
@@ -55,5 +57,7 @@ file_to_be_access = file_picker(arg_a)
 old_stats = read_pkle(file_to_be_access)
 new_stats = query_calculator(val_stm, old_stats)
 destroy_pkle(file_to_be_access)
-wrt_pkle(file_to_be_access, new_stats)
+new_stats_tobe_stored = query_calculator_store(new_stats,old_stats)
+wrt_pkle(file_to_be_access, new_stats_tobe_stored)
 print (new_stats)
+print (new_stats_tobe_stored)
